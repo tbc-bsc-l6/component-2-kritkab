@@ -1,56 +1,66 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/U8Q2iAIG)
-# Component 2 - Task
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p>This is a starter Laravel package that includes BREEZE for authentication and is scaffolded with TailwindCSS. 
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-<p>
-Please see the assignment brief for a full set of requirements
-</p>
-<p>
-Once the project is cloned to your workspace. You will need to:
-</p>
-<ul>
-<li><b>composer install</b> (to populate the vendor folder)</li>
-<li><b>npm install && npm run dev</b> (to populate node_modules)</li>
-<li><b>cp .env.example .env</b> to create your own .env file</li>
-<li><b>php artisan key:generate</b> to add a key to the .env file</li>
-</ul>
 
-<br />
-<br />
-<b>NOTE (For development on Che)</b>
+## About Laravel
 
-<p>As Che will force https connection the following file needs to be amended<br />
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-app/Providers/AppServiceProvider.php <br />
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-<code>public function boot(): void
-    <br />&nbsp;{
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\URL::forceScheme('https'); 
-    <br />&nbsp;}
-</code>
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-In addition as Che routes the test site through a different port - Vite as a live css development tool will likely not connect,
-rather than <em>npm run dev</em>, use <em>npm run build</em> to see the site running.
+## Learning Laravel
 
-<h3>Tasks to do</h3>
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-<p>Please refer to the marking scheme. As a guide:</p>
-<ul>
-<li>Models for Product and  ProductType</li>
-<li>CRUD operations using the correct HTTP Action</li>
-<li>Good practice in the use of Model classes</li>
-<li>Factories for Seeding data</li>
-<li>Eloquent extensions to utilise Foreign Key relations</li>
-<li>Different User Types</li>
-<li>Gates and Middleware</li>
-<li>Extending HttpRequests - Forms, Authorisation and Validation</li>
-<li>Filtering /  Pagination to improve usability of large datasets</li>
-<li>Good use of View Components (PHP Classes and Blade files)</li>
-<li>File upload (images)</li>
-</ul>
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-<p>Please remember that a professionl approach to development should be adopted. Commit often and follow good practice on writing code. Code should be readable and understandable.</p>
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+## Laravel Sponsors
 
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
