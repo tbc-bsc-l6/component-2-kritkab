@@ -16,7 +16,6 @@
                     </div>
                     <div class="h5 text-center">
                         <strong>{{ Auth::user()->name }}</strong>
-                        <p class="h6 mt-2 text-muted">5 Reviews</p>
                     </div>
                 </div>
             </div>
