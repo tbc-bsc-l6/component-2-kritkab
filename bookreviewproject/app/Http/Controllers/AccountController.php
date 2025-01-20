@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AccountController extends Controller
 {
@@ -77,7 +80,7 @@ class AccountController extends Controller
 
         $rules=[
             'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email,' . Auth::user()->id . ',id',
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id.',id',
         ];
 
         if(!empty($request->image)){
@@ -96,13 +99,22 @@ class AccountController extends Controller
         $user->save();
 
         if(!empty($request->image)){
+
+            File::delete(public_path('uploads/profile'.$user->image));
+
             $image=$request->image;
             $ext=$image->getClientOriginalExtension();
             $imageName=time().'.'.$ext;
-            $image->move(public_path('uploads/profile'),$imageName);
+            $image->move(public_path('uploads/profile',$imageName));
 
             $user->image=$imageName;
             $user->save();
+
+            $manager=new ImageManager(Driver::class);
+            $img=$manager-> read(public_path('uploads/profile/',$imageName));
+
+            $img->cover(150,150);
+            $img->save(public_path('uploads/profile/thumb/'.$imageName));
         }
 
         return redirect()->route('account.profile')->with('success','Profile updated sucessfully');
@@ -116,5 +128,5 @@ class AccountController extends Controller
         return redirect()-> route('account.login');
     }
     
-    }
+}
 

@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="text-center mb-3">
                         @if(Auth::user()->image != "")
-                            <img src="{{ asset('uploads/profile/'.Auth::user()->image) }}" class="img-fluid rounded-circle" alt="John Doe">
+                            <img src="{{ asset('uploads/profile/thumb/'.Auth::user()->image) }}" class="img-fluid rounded-circle" alt="John Doe">
                         @endif
                     </div>
                     <div class="h5 text-center">
@@ -25,14 +25,7 @@
                     Navigation
                 </div>
                 <div class="card-body sidebar">
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a href="book-listing.html">Books</a></li>
-                        <li class="nav-item"><a href="reviews.html">Reviews</a></li>
-                        <li class="nav-item"><a href="profile.html">Profile</a></li>
-                        <li class="nav-item"><a href="my-reviews.html">My Reviews</a></li>
-                        <li class="nav-item"><a href="change-password.html">Change Password</a></li>
-                        <li class="nav-item"><a href="{{ route('account.logout') }}">Logout</a></li>
-                    </ul>
+                    @include('layouts.sidebar')
                 </div>
             </div>
         </div>
@@ -63,6 +56,9 @@
                             @error('image')
                                 <p class="invalid-feedback">{{ $message }}</p>   
                             @enderror
+                            @if(Auth::user()->image != "")
+                            <img src="{{ asset('uploads/profile/'.Auth::user()->image) }}" class="img-fluid mt-4" alt="">
+                            @endif
                             {{--<img src="images/profile-img-1.jpg" class="img-fluid mt-4" alt="John Doe" >--}}
                         </div>
                         <button class="btn btn-primary mt-2" type="submit">Update</button>
