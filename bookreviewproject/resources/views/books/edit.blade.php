@@ -36,7 +36,7 @@
                     Edit Book
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('books.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('books.update', $book->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
@@ -84,5 +84,5 @@
             </div>                
         </div>
     </div>     
-</div>
+</div> 
 @endsection
