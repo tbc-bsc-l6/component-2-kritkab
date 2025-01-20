@@ -10,7 +10,9 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center mb-3">
-                        <img src="images/profile-img-1.jpg" class="img-fluid rounded-circle" alt="John Doe">
+                        @if(Auth::user()->image != "")
+                            <img src="{{ asset('uploads/profile/'.Auth::user()->image) }}" class="img-fluid rounded-circle" alt="John Doe">
+                        @endif
                     </div>
                     <div class="h5 text-center">
                         <strong>{{ Auth::user()->name }}</strong>
@@ -35,24 +37,33 @@
             </div>
         </div>
         <div class="col-md-9">
+            @include('layouts.message')
             <div class="card border-0 shadow">
                 <div class="card-header text-white">Profile</div>
                 <div class="card-body">
-                    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('account.updateProfile') }}" method="post" >
                         @csrf
-                        @method('PATCH')
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" value="John Doe" class="form-control" placeholder="Name" name="name" id="name" />
+                            <input type="text" value="{{ old('name', $user->name)}}" class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name" id="name" />
+                            @error('name')
+                                <p class="invalid-feedback">{{ $message }}</p>   
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" value="john@example.com" class="form-control" placeholder="Email" name="email" id="email" />
+                            <input type="text" value="{{ old('email', $user->email)}}" class="form-control  @error('email') is-invalid @enderror" placeholder="Email" name="email" id="email" />
+                            @error('email')
+                                <p class="invalid-feedback">{{ $message }}</p>   
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
-                            <input type="file" name="image" id="image" class="form-control">
-                            <img src="images/profile-img-1.jpg" class="img-fluid mt-4" alt="John Doe">
+                            <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror ">
+                            @error('image')
+                                <p class="invalid-feedback">{{ $message }}</p>   
+                            @enderror
+                            {{--<img src="images/profile-img-1.jpg" class="img-fluid mt-4" alt="John Doe" >--}}
                         </div>
                         <button class="btn btn-primary mt-2" type="submit">Update</button>
                     </form>

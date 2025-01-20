@@ -63,10 +63,53 @@ class AccountController extends Controller
 
     }
     
+    //This method will show user profile page
     public function profile(){
-        $user= User::find();
-        return view('account.profile');
+        $user= User::find(Auth::user()->id);
+        return view('account.profile',[
+            'user'=>$user
+            ]
+        );
     }
+
+    //This method will update userprofile
+    public function updateProfile(Request $request){
+
+        $rules=[
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id . ',id',
+        ];
+
+        if(!empty($request->image)){
+            $rules['image']='image';
+        }
+
+        $validator = Validator::make($request->all(),$rules);
+    
+        if ($validator->fails()){
+            return redirect()->route('account.profile')->withInput()->withErrors($validator);
+        }
+
+        $user= User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        if(!empty($request->image)){
+            $image=$request->image;
+            $ext=$image->getClientOriginalExtension();
+            $imageName=time().'.'.$ext;
+            $image->move(public_path('uploads/profile'),$imageName);
+
+            $user->image=$imageName;
+            $user->save();
+        }
+
+        return redirect()->route('account.profile')->with('success','Profile updated sucessfully');
+
+
+    }
+    
 
     public function logout(){
         Auth::logout();
